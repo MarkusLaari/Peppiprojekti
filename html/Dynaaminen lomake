@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<title>Dynaaminen lomake</title>		
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="Dynlomake.css">
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-129757986-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-129757986-1');
+</script>
+	</head>
+	<body>
+        <div id="kuva"><img src="peppi.png"></div>
+        <h1>Tyytyväisyyskysely peppi-järjestelmästä</h1>
+        <form><div id="lomake"></div><button onclick="laheta()">Lähetä</button></form>
+        <!-- jqueryn pääkirjasto -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+        </script>
+        
+        <script>
+        var lomakekentta = [];
+        $.getJSON("http://bytemekysely.herokuapp.com/kysymykset", function( data ) {
+        
+        var items = [];  // alustetaan taulukko nimellä item  
+        
+        $.each(data, function( key, d ) {
+        // lisätään push:lla taulukkoon li-elementti, jossa on json-tieto
+        items.push(d.kysymys + "<br><input type=text id="+d.kysymysId + "><br>");
+        lomakekentta.push(d.kysymysId);
+        })
+          
+        //tulostetaan taulukon tiedot sivulle
+          $( "<div/>", {           // tehdään uusi div-elementti
+          html: items.join( "" )  // yhdistetaan taulukon solut join:lla
+          }).appendTo( "#lomake" );  // lisätään div-elementti taulukkotietoineen                           //bodyyn
+          });
+        
+            function laheta() {
+                var vastaus;
+                var lahetysjson = "";
+                for (i = 0; i < lomakekentta.length; i++) {
+                vastaus = document.getElementById(lomakekentta[i]).value;
+                if (i<lomakekentta.length-1) {
+                lahetysjson += "{kysymysId: \"" + lomakekentta[i] + "\", vastaus: \"" + vastaus + "\"}, ";
+                }
+                    else if (i==lomakekentta.length-1) {
+                        lahetysjson += "{kysymysId: \"" + lomakekentta[i] + "\", vastaus: \"" + vastaus + "\"}";
+                    }
+                var lahetys = "[" + lahetysjson + "]";
+                }
+                
+                alert(lahetys);
+                
+                var myJSON = JSON.stringify(lahetys);
+
+                $.ajax({
+                url: "https://bytemekysely.herokuapp.com/vastaukset",
+                type: 'POST',
+                dataType: 'json',
+                data: jsonData, 
+                success: function() { alert('POST completed. Data:' + myJSON)}
+                });
+            }
+    </script>
+        
+        <div id="gif"><img src="homer2.gif" style="margin-left: 300px"><img src="homer5.gif" style="margin-left:310px"></div>
+        
+	</body>
+</html>
