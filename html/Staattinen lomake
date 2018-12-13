@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<title>Lomake</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="lomake.css">
+        <style>
+   .block {
+      display: block;
+   }
+</style>
+	</head>
+	<body>
+        <div id="kuva"><img src="peppi.png"></div>
+        <h1>Tyytyväisyyskysely peppi-järjestelmästä</h1>
+        <form class="cf">
+            <div>
+                Mihin eri tarkoituksiin olet käyttänyt peppiä? (esim. HOPS, opiskeluohjeet…)<form><br>
+                    <label class="checkbox-inline">
+                      HOPS<input type="checkbox" value="">
+                    </label>
+                    <label class="checkbox-inline">
+                      Ilmoittautuminen<input type="checkbox" value="">
+                    </label>
+                    <label class="checkbox-inline">
+                      Suoritusote<input type="checkbox" value="">
+                    </label>
+                    <label class="checkbox-inline">
+                      Lukuvuosi-ilmo<input type="checkbox" value="">
+                    </label>
+                    <label class="checkbox-inline">
+                      Opiskeluohjeet<input type="checkbox" value="">
+                    </label>
+                </form><br>
+                <form>
+                    <form class="radio">
+                        <div class="huono"><img src="negative.png"></div>
+                        <div class="hyva"><img src="positive.png"></div>
+                        <p>Kuinka olet onnistunut tekemään haluamasi käyttäessäsi peppiä?</p>
+                        <label class="radio-inline">
+                          1<input type="radio" name="optradio" checked>
+                        </label>
+                        <label class="radio-inline">
+                          2<input type="radio" name="optradio">
+                        </label>
+                        <label class="radio-inline">
+                          3<input type="radio" name="optradio">
+                        </label>
+                        <label class="radio-inline">
+                          4<input type="radio" name="optradio">
+                        </label>
+                        <label class="radio-inline">
+                          5<input type="radio" name="optradio">
+                        </label>
+                    </form>
+                    <form class="radio">
+                         <div class="huono"><img src="negative.png"></div>
+                        <div class="hyva"><img src="positive.png"></div>
+                        <p>Tuntuiko, että siihen käyttämäsi aika oli sopiva?</p>
+                        <label class="radio-inline">
+                          1<input type="radio" name="optradio" checked>
+                        </label>
+                        <label class="radio-inline">
+                          2<input type="radio" name="optradio">
+                        </label>
+                        <label class="radio-inline">
+                          3<input type="radio" name="optradio">
+                        </label>
+                        <label class="radio-inline">
+                          4<input type="radio" name="optradio">
+                        </label>
+                        <label class="radio-inline">
+                          5<input type="radio" name="optradio">
+                        </label>
+                    </form>
+                    <form class="radio">
+                        <div class="huono"><img src="negative.png"></div>
+                        <div class="hyva"><img src="positive.png"></div>
+                        <p>Helpottuiko pepin käyttö ensimmäisen käyttökerran jälkeen?</p>
+                        <label class="radio-inline">
+                          1<input type="radio" name="optradio" checked>
+                        </label>
+                        <label class="radio-inline">
+                          2<input type="radio" name="optradio">
+                        </label>
+                        <label class="radio-inline">
+                          3<input type="radio" name="optradio">
+                        </label>
+                        <label class="radio-inline">
+                          4<input type="radio" name="optradio">
+                        </label>
+                        <label class="radio-inline">
+                          5<input type="radio" name="optradio">
+                        </label>
+                    </form>
+                </form>
+                Onko järjestelmässä mielestäsi joitakin puutteita? Mitä?<textarea name="message" type="text" id="input-message" placeholder=""></textarea>
+                <button onclick="laheta()">Lähetä</button>
+                <img src="homer2.gif" style="margin-top:20px">
+                <img src="homer4.gif">
+            </div>
+        </form>
+	</body>
+</html>
